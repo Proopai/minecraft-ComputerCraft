@@ -1,0 +1,41 @@
+--[[
+	
+	Rednet Repeater v0.2
+	Created: 1/2/2013 15:50 PST
+	Created By: Proopai
+	Description: This is a Rednet Broadcast Repeater that is been created to run at startup.  This allows
+		the user to pass commands to the repeater and have them sent back out to everyone.  Future versions 
+		will allow you to broadcast or send.
+
+--]]
+
+print("Computer ID: "..os.getComputerID())
+print("Opening Rednet Connection.....")
+rednet.open("back")
+print("Connected to Rednet and Online!")
+print("Setting up Broadcast repeater!")
+
+i = 0
+
+print("Sending Repeater ID: "..os.getComputerID())
+rednet.broadcast("Repeater ID: "..os.getComputerID())
+
+while i < 900 do
+
+	id, msg = rednet.receive()
+	
+	print("Broadcasting Repeater ID")
+	
+	mID = os.getComputerID()
+	
+	print("Sending My ID First then Message")
+	rednet.broadcast("Repeater ID: "..mID)
+	
+	print("Message received: "..msg.." - From: "..id)
+	print("Repeating Message out")
+	
+	rednet.broadcast(msg)
+	print("Sending Conformation to Sender!")
+	rednet.send(id, "Message Repeated")
+	
+end

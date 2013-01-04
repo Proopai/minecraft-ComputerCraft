@@ -1,0 +1,32 @@
+--[[
+	
+	Rednet Watcher v0.1
+	Created: 1/3/2013 9:50 PST
+	Created By: Proopai
+	Description: This is a Rednet Watcher that will read all Rednet broadcasts and display out to a monitor
+		on the left side of the computer.  Future version will allow the placement of a monitor in any area same 
+		with placement of the wireless addon.
+
+--]]
+
+local monitor = peripheral.wrap("left")
+term.redirect(monitor)
+monitor.clear()
+monitor.setCursorPos(1,1)
+print("Starting Rednet Broadcast Watcher")
+print("Computer ID: "..os.getComputerID())
+print("Opening Rednet Connection.....")
+rednet.open("right")
+print("Connected to Rednet and Online!")
+print("Setting up Rednet Watcher!")
+
+i = 0
+
+while i < 900 do
+
+	id, msg = rednet.receive()
+	
+	print("Message Received! Decoding Now!")
+	print("Message Says: "..msg.." - From: "..id)
+	
+end

@@ -1,0 +1,108 @@
+--[[
+	
+	Full Automatic Tree Farmer v1.0
+	Created: 8/13/2012 21:19 PST
+	Created By: Jan
+	Description: This is a automated Treefarmer for Birchtree's.  I have updated it to refuel the little turtle.
+		The orignal code can be found at http://www.computercraft.info/forums2/index.php?/topic/3408-141-full-automatic-tree-farmer-v10
+
+--]]
+
+function f(loc)
+	while not turtle[loc]() do
+		sleep(0.5)
+	end
+end
+
+function up() f("up") end
+function down() f("down") end
+function fw() f("forward") end
+function back() f("back") end
+function l() f("turnLeft") end
+function r() f("turnRight") end
+function d() turtle.dig() end
+function du() turtle.digUp() end
+function dd() turtle.digDown() end
+function c(x)
+	for i=1,x do d() fw() du() dd() end
+end
+
+function reFuelTurt()
+
+	if turtle.getFuelLevel() <= 50 then
+		turtle.select(2)
+		turtle.refuel(4)
+	end
+end
+
+function cutTree()
+	print("Tree Cut")
+	hi = 0
+	
+	while not turtle.detectUp() do
+		up() hi=hi+1
+	end
+	
+	du() up() du() up() du() l() l()
+	c(1) r() c(2) r() c(4) r() c(4) r()
+	c(4) r() c(1) r() c(3) l() c(2) l()
+	c(2) back() l() c(1) l() down()
+	
+	for r=1,hi do dd() down() end
+	
+	dd() turtle.placeDown() back()
+	down() down()
+	
+	print(hi)
+end
+
+function scanTree()
+	if not turtle.detectDown() then
+		r() fw() fw()
+		
+		for k=3,15 do
+			turtle.select(k)
+			turtle.drop()
+		end
+		
+		turtle.select(1)
+		back() back()
+		l()
+	end
+	
+	up() sleep(1) turtle.select(16) turtle.place() turtle.select(1)
+		
+	if turtle.detect() then
+		up()
+		if turtle.detect() then
+			down()
+			cutTree()
+		else
+			down()
+			down()
+		end
+	else
+		turtle.select(1) turtle.place()
+		down()
+	end
+	
+	l() if turtle.detect() then
+			back() r() fw() r() fw()
+			fw() fw()
+		else
+			l() l()
+			
+			if turtle.detect() then
+				back() l() fw() l() fw()
+				fw() fw()
+			else
+				fw() l() fw() fw() l() fw() r() fw()
+				fw() fw()
+			end
+		end
+end
+
+while true do
+	reFuelTurt()
+	scanTree()
+end

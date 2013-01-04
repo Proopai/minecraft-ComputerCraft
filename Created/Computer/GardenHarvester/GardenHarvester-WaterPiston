@@ -1,0 +1,49 @@
+--[[
+	
+	Garden Harvester [Water Piston] v0.1
+	Created: 1/4/2013 01:20 PST
+	Created By: Proopai
+	Description: This code is to be used on the piston that holds the water back from falling into the planter beds for harvesting.
+		The code right now is very early development and will be updated to allow for installing one time on each Piston and a server 
+		to maintain where each one is.  This will also go with the Garden Harvester [Server] and Garden Harvester [User Interface]
+
+--]]
+
+redstone.setOutput("back", true)
+print("Computer ID: "..os.getComputerID())
+print("Opening Rednet Connection.....")
+rednet.open("back")
+print("Connected to Rednet and Online!")
+print("Setting up Garden Harvester Row 4 Column 4!")
+
+i = 0
+
+print("Sending RHarvest Bot ID: "..os.getComputerID())
+rednet.broadcast("Row x Column x Harvest Bot Online with ID: "..os.getComputerID())
+
+while i < 900 do
+
+	id, msg = rednet.receive()
+	
+	if msg == "R4H4" then
+		print("Message received!")
+		print("Starting the Harvest in Row 4 Column 4")
+		rednet.broadcast("Starting the Harvest in Row 4 Column 4")
+		redstone.setOutput("back", false)
+		sleep(5)
+		print("Harvest Completed!")
+		rednet.broadcast("Harvest Completed Row 4 Column 4")
+		redstone.setOutput("back", true)
+	elseif msg == "RAHA" then
+		print("Message received!")
+		print("Starting the Harvest in Row 4 Column 4")
+		rednet.broadcast("Starting the Harvest in Row 4 Column 4")
+		redstone.setOutput("back", false)
+		sleep(5)
+		print("Harvest Completed!")
+		rednet.broadcast("Harvest Completed Row 4 Column 4")
+		redstone.setOutput("back", true)
+	else
+	
+	end
+end
