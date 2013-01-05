@@ -6,44 +6,69 @@
 	Description: This code is to be used on the piston that holds the water back from falling into the planter beds for harvesting.
 		The code right now is very early development and will be updated to allow for installing one time on each Piston and a server 
 		to maintain where each one is.  This will also go with the Garden Harvester [Server] and Garden Harvester [User Interface]
+	
+	1/4/2013 23:53 PST
+		Updated this to allow for you to send the command for All Rows, A Set Row, All Columns, A Set Column, or All Rows and Columns. 
+		Next step is to shorten this and create a function that will allow the repeat of information to be taken out.  Also Code line 
+		comments will be placed in the next version.
 
 --]]
 
+term.clear()
+term.setCursorPos(1,1)
+print("Garden Harvester [Water Piston] v0.3")
 redstone.setOutput("back", true)
 print("Computer ID: "..os.getComputerID())
 print("Opening Rednet Connection.....")
-rednet.open("back")
+rednet.open("right")
 print("Connected to Rednet and Online!")
-print("Setting up Garden Harvester Row 4 Column 4!")
+print("Setting up Garden Harvester Row 3 Column 2!")
 
 i = 0
 
-print("Sending RHarvest Bot ID: "..os.getComputerID())
-rednet.broadcast("Row x Column x Harvest Bot Online with ID: "..os.getComputerID())
+print("Water Piston ID: "..os.getComputerID())
+rednet.broadcast("Row 1 Column 1 Water Piston Online with ID: "..os.getComputerID())
 
 while i < 900 do
 
 	id, msg = rednet.receive()
 	
-	if msg == "R4H4" then
+	if msg == "R1H1" then
 		print("Message received!")
-		print("Starting the Harvest in Row 4 Column 4")
-		rednet.broadcast("Starting the Harvest in Row 4 Column 4")
+		print("Starting the Harvest in Row 1 Column 1")
+		rednet.broadcast("Starting the Harvest in Row 1 Column 1")
 		redstone.setOutput("back", false)
 		sleep(5)
 		print("Harvest Completed!")
-		rednet.broadcast("Harvest Completed Row 4 Column 4")
+		rednet.broadcast("Harvest Completed Row 1 Column 1")
+		redstone.setOutput("back", true)
+	elseif msg == "RAH1" then
+		print("Message received!")
+		print("Starting the Harvest in Row 1 Column 1")
+		rednet.broadcast("Starting the Harvest in Row 1 Column 1")
+		redstone.setOutput("back", false)
+		sleep(5)
+		print("Harvest Completed!")
+		rednet.broadcast("Harvest Completed Row 1 Column 1")
+		redstone.setOutput("back", true)
+	elseif msg == "R1HA" then
+		print("Message received!")
+		print("Starting the Harvest in Row 1 Column 1")
+		rednet.broadcast("Starting the Harvest in Row 1 Column 1")
+		redstone.setOutput("back", false)
+		sleep(5)
+		print("Harvest Completed!")
+		rednet.broadcast("Harvest Completed Row 1 Column 1")
 		redstone.setOutput("back", true)
 	elseif msg == "RAHA" then
 		print("Message received!")
-		print("Starting the Harvest in Row 4 Column 4")
-		rednet.broadcast("Starting the Harvest in Row 4 Column 4")
+		print("Starting the Harvest in Row 1 Column 1")
+		rednet.broadcast("Starting the Harvest in Row 1 Column 1")
 		redstone.setOutput("back", false)
 		sleep(5)
 		print("Harvest Completed!")
-		rednet.broadcast("Harvest Completed Row 4 Column 4")
+		rednet.broadcast("Harvest Completed Row 1 Column 1")
 		redstone.setOutput("back", true)
 	else
-	
 	end
 end

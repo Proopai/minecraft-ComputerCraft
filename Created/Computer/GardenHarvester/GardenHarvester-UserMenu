@@ -1,0 +1,143 @@
+--[[
+	
+	Garden Harvester [User Menu] v0.3
+	Created: 1/4/2013 23:53 PST
+	Created By: Proopai
+	Description: This is the code for the user menu that will manage the Water Pistons and later version the Harvesting Turtles.  It 
+		creates a simple easy to read menu that requires the users input.  This version will be updates with more options and more functions.
+
+--]]
+
+function load()
+
+	term.clear()
+	term.setCursorPos(1,1)
+	rednet.open("back")
+	print("Garden Harvester [User Menu] v0.3")
+	print("Available Commands")
+	print("1. Harvest")
+	print("2. Help")
+	print("3. About")
+	print("4. Reboot")
+	write("> ")
+	command = read()
+
+end
+
+function reload()
+	
+	term.clear()
+	term.setCursorPos(1,1)
+	command = 0
+	harvesting = 0
+	harvestr = 0
+	print("Garden Harvester [User Menu] v0.3")
+	print("Available Commands")
+	print("1. Harvest")
+	print("2. Help")
+	print("3. About")
+	print("4. Reboot")
+	write("> ")
+	command = read()
+
+end
+
+function harvestrow()
+
+	term.clear()
+	term.setCursorPos(1,1)
+	print("1. Section 1")
+	print("2. Section 2")
+	print("3. Section 3")
+	print("4. Section 4")
+	print("5. All")
+	write("Harvest Row> ")
+	harvestr = read()
+	
+	if harvestr == "1" then
+		print("Harvesting Row "..harvesting.." Section "..harvestr)
+		rednet.broadcast("R"..harvesting.."H4")
+	elseif harvestr == "2" then
+		print("Harvesting Row "..harvesting.." Section "..harvestr)
+		rednet.broadcast("R"..harvesting.."H4")
+	elseif harvestr == "3" then
+		print("Harvesting Row "..harvesting.." Section "..harvestr)
+		rednet.broadcast("R"..harvesting.."H4")
+	elseif harvestr == "4" then
+		print("Harvesting Row "..harvesting.." Section "..harvestr)
+		rednet.broadcast("R"..harvesting.."H4")
+	elseif harvestr == "5" then
+		print("Harvesting Row "..harvesting.." Section "..harvestr)
+		rednet.broadcast("R"..harvesting.."HA")
+	else
+	end
+
+end
+
+function harvest()
+	
+	print("Harvest Menu")
+	harvesting = 0
+	print("1. Row 1")
+	print("2. Row 2")
+	print("3. Row 3")
+	print("4. Row 4")
+	print("5. Row 5")
+	print("6. Row 6")
+	print("7. All")
+	write("Harvest> ")
+	harvesting = read()
+	
+		if harvesting == "1" then
+			harvestrow()
+		elseif harvesting == "2" then
+			harvestrow()
+		elseif harvesting == "3" then
+			harvestrow()
+		elseif harvesting == "4" then
+			harvestrow()
+		elseif harvesting == "5" then
+			harvestrow()
+		elseif harvesting == "6" then
+			harvestrow()
+		elseif harvesting == "7" then
+			harvesting = "A"
+			harvestrow()
+		else
+			print("Unknown Command.....")
+		end
+	
+end
+
+load()
+while true do
+	if command == "1" then
+		term.clear()
+		term.setCursorPos(1,1)
+		harvest()
+		reload()
+	elseif command == "2" then
+		term.clear()
+		term.setCursorPos(1,1)
+		print("Help")
+		print(" ")
+		reload()
+	elseif command == "3" then
+		term.clear()
+		term.setCursorPos(1,1)
+		print("About")
+		print(" ")
+		reload()
+	elseif command == "4" then
+		term.clear()
+		term.setCursorPos(1,1)
+		print("Rebooting....")
+		shell.run("reboot")
+	else
+		term.clear()
+		term.setCursorPos(1,1)
+		print("Unknown Command. Please try again!")
+		print(" ")
+		reload()
+	end
+end
