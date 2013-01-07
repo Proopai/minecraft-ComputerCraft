@@ -1,0 +1,45 @@
+--[[
+	
+	Fir Tree Logger v0.2
+	Created: 1/6/2013 22:10 PST
+	Created By: Proopai
+	Description: This program is used to automaticly chop down fir trees.  It is the first step in a fully automated Wood Farming Farm.
+		This will be expanded out to allow the Turtle to dump the logs into a sorting chest and then refill fuel, bonemeal, and sapplings
+		as needed.
+
+--]]
+
+e = 0
+
+while e <= 9 do
+  turtle.forward()
+  e = e + 1
+end
+
+turtle.dig()
+turtle.forward()
+turtle.select(2)
+turtle.turnLeft()
+
+i = 0
+
+while turtle.compareUp() do
+  turtle.digUp()
+  turtle.dig()
+  turtle.up()
+  i = i + 1
+end
+
+turtle.dig()
+turtle.turnRight()
+turtle.dig()
+turtle.forward()
+turtle.turnLeft()
+
+while i >=1 do
+  turtle.dig()
+  turtle.digDown()
+  turtle.down()
+  turtle.dig()
+  i = i - 1
+end

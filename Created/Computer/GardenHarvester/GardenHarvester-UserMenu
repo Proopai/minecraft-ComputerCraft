@@ -1,10 +1,13 @@
 --[[
 	
-	Garden Harvester [User Menu] v0.3
+	Garden Harvester [User Menu] v0.4
 	Created: 1/4/2013 23:53 PST
 	Created By: Proopai
 	Description: This is the code for the user menu that will manage the Water Pistons and later version the Harvesting Turtles.  It 
 		creates a simple easy to read menu that requires the users input.  This version will be updates with more options and more functions.
+		
+	1/6/2013 23:50 PST
+		Updated a flaw that only made it so Row 4 was the one which got opened to be harvested.
 
 --]]
 
@@ -56,19 +59,19 @@ function harvestrow()
 	
 	if harvestr == "1" then
 		print("Harvesting Row "..harvesting.." Section "..harvestr)
-		rednet.broadcast("R"..harvesting.."H4")
+		rednet.broadcast("R"..harvesting.."H"..harvestr)
 	elseif harvestr == "2" then
 		print("Harvesting Row "..harvesting.." Section "..harvestr)
-		rednet.broadcast("R"..harvesting.."H4")
+		rednet.broadcast("R"..harvesting.."H"..harvestr)
 	elseif harvestr == "3" then
 		print("Harvesting Row "..harvesting.." Section "..harvestr)
-		rednet.broadcast("R"..harvesting.."H4")
+		rednet.broadcast("R"..harvesting.."H"..harvestr)
 	elseif harvestr == "4" then
 		print("Harvesting Row "..harvesting.." Section "..harvestr)
-		rednet.broadcast("R"..harvesting.."H4")
+		rednet.broadcast("R"..harvesting.."H"..harvestr)
 	elseif harvestr == "5" then
 		print("Harvesting Row "..harvesting.." Section "..harvestr)
-		rednet.broadcast("R"..harvesting.."HA")
+		rednet.broadcast("R"..harvesting.."H"..harvestr)
 	else
 	end
 
