@@ -1,0 +1,59 @@
+--[[
+
+  Custom Tunneling Program v0.1
+  Created: 2/28/2013 20:00 PST
+  Updated:
+  Created By: Proopai (Eric Vasquez)
+  Description: This program is to use the Turtles to make wider Tunnels then 2x3.  It will allow you to state how tall you want the tunnel to go and how wide you would like it to go along with placing a Torch.
+
+  3/1/2013 00:01 PST
+  ------------------------
+  This will be expanded little by little till it is completed.  It will be able to make a tunnel that goes in one direction for a set time limit.  Refueling is planed to be put in but is yet to be entered into the application. Right now all this does is have the menu setup working on getting the rest of the functions setup.
+
+--]]
+
+function load()
+
+  term.clear()
+  term.setCursorPos(1,1)
+  print("Tunneling version v0.1")
+  print("How Deep of a Tunnel Do you want?")
+  write("#")
+  deep = read()
+  print("How Tall of a Tunnel do you want?")
+  write("#")
+  tall = read()
+  print("How far out on the left do you want?")
+  write("#")
+  left = read()
+  print("How far out on the right do you want?")
+  write("#")
+  right = read()
+
+end
+
+function leave()
+
+  term.clear()
+  term.setCursorPos(1,1)
+  term.restore()
+
+end
+
+function startTunnel()
+
+  a = deep
+  b = tall
+  c = left
+  d = right
+
+
+end
+
+load()
+print("I will dig "..deep.." blocks in")
+print("I will dig "..tall.." blocks high")
+print("I will dig "..left.." blocks to the left")
+print("I will dig "..right.." blocks to the right")
+startTunnel()
+leave()
