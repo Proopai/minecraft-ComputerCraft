@@ -33,6 +33,10 @@
 
 --]]
 
+function menu()
+
+end
+
 e = 0
 
 while e <= 9 do
