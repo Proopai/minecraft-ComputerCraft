@@ -1,35 +1,20 @@
 --[[
 
-	Automated Tree Logger v0.4
+	Automated Tree Logger v0.3
 	Created: 1/6/2013 22:10 PST
-  Updated: 5/30/2013 09:00 PST
+  Updated: 2/25/2013 13:12 PST
 	Created By: Proopai
-	Description: This program is used to automatically chop down fir trees.  It is the first step in a fully automated Wood Farming Farm.
-		This will be expanded out to allow the Turtle to dump the logs into a sorting chest and then refill fuel, bonemeal, and saplings
+	Description: This program is used to automaticly chop down fir trees.  It is the first step in a fully automated Wood Farming Farm.
+		This will be expanded out to allow the Turtle to dump the logs into a sorting chest and then refill fuel, bonemeal, and sapplings
 		as needed.
-
-  Future Features
-  ---------------------------
-   - Wireless Control
-   - Refuling and Fuel checks
-   - Item Sorting
-   - Automatic Planting
-   - Automatic Tree Growth
-   - Ability to cut Different Tree Types
 
   2/25/2013 Update
   ---------------------------
   Placed so that if you put a chest to the left of the turtle it will drop everything off from Slot 2 on.  This might
-    in the future to allow for the ability of adding saplings and bone meal to allow for automated planting and
+    in the future to allow for the ability of adding sapplings and bone meal to allow for automated planting and
     tree creation.  Currently the only problem is when you have to many leaves in the sky the tree will not plant.
     This currently works for all trees with 4 section bases.  I will be making a automated tree harvester for single
     trunk trees.
-
-  5/30/2013 Update
-  ---------------------------
-  With changing of the compareUp() to detectUp() it will allow the ability to cut down any 4x4 tree.  The next update
-   will have the addition of refueling and fuel level check.  Along with Redstone signaling to allow for remote monitoring
-   of the turtle with a computer and redstone network.
 
 --]]
 
@@ -47,7 +32,7 @@ turtle.turnLeft()
 
 i = 0
 
-while turtle.detectUp() do
+while turtle.compareUp() do
   turtle.digUp()
   turtle.dig()
   turtle.up()
